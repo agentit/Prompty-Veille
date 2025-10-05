@@ -118,7 +118,8 @@ const Dashboard = () => {
                 </Button>
               </CardFooter>
             </Card>
-          ))}
+          );
+          })}
         </div>
       </div>
     </div>
@@ -346,7 +347,8 @@ const Sources = () => {
                 </Button>
               </CardFooter>
             </Card>
-          ))
+          );
+          })
         )}
       </div>
     </div>
@@ -637,7 +639,8 @@ const Summaries = () => {
                 </Button>
               </CardFooter>
             </Card>
-          ))
+          );
+          })
         )}
       </div>
     </div>
@@ -883,7 +886,8 @@ const Articles = () => {
                 </Button>
               </CardFooter>
             </Card>
-          ))
+          );
+          })
         )}
       </div>
     </div>

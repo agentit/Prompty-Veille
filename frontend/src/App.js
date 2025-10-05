@@ -909,9 +909,29 @@ const Articles = () => {
                   {article.sources.length} sources • {new Date(article.created_at).toLocaleDateString('fr-FR')}
                 </p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="article-footer">
                 <Button onClick={() => navigate(`/articles/${article.id}`)} data-testid={`view-article-btn-${article.id}`}>
                   Lire l'article complet
+                </Button>
+                <Button 
+                  variant="destructive" 
+                  size="sm"
+                  onClick={async (e) => {
+                    e.stopPropagation();
+                    if (window.confirm("Êtes-vous sûr de vouloir supprimer cet article ?")) {
+                      try {
+                        await axios.delete(`${API}/articles/${article.id}`);
+                        toast.success("Article supprimé");
+                        fetchData();
+                      } catch (error) {
+                        console.error("Error deleting article:", error);
+                        toast.error("Erreur lors de la suppression");
+                      }
+                    }
+                  }}
+                  data-testid={`delete-article-btn-${article.id}`}
+                >
+                  Supprimer
                 </Button>
               </CardFooter>
             </Card>

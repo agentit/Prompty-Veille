@@ -793,7 +793,7 @@ body {
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  background: var(--gray-dark);
+  background: var(--gray-anthracite);
   border: 1px solid var(--gray-steel);
   border-radius: 8px;
   text-decoration: none;
@@ -802,8 +802,9 @@ body {
 
 .source-card:hover {
   border-color: var(--yellow-main);
-  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.3);
   transform: translateY(-2px);
+  background: var(--gray-dark);
 }
 
 .source-icon {

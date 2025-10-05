@@ -581,10 +581,12 @@ const Summaries = () => {
             </CardContent>
           </Card>
         ) : (
-          filteredSummaries.map((summary) => (
+          filteredSummaries.map((summary) => {
+            const isAutomatic = summary.source_id !== null && summary.source_id !== undefined;
+            return (
             <Card 
               key={summary.id} 
-              className={`summary-card ${selectedForArticle.includes(summary.id) ? 'selected' : ''}`}
+              className={`summary-card ${selectedForArticle.includes(summary.id) ? 'selected' : ''} ${isAutomatic ? 'automatic' : 'manual'}`}
               data-testid={`summary-card-${summary.id}`}
             >
               <CardHeader>
@@ -599,7 +601,19 @@ const Summaries = () => {
                     />
                     <CardTitle className="summary-title">{summary.title}</CardTitle>
                   </div>
-                  {summary.is_new && <Badge variant="default" data-testid="new-badge">Nouveau</Badge>}
+                  <div className="badges-group">
+                    {summary.is_new && <Badge variant="default" data-testid="new-badge">Nouveau</Badge>}
+                    {isAutomatic && (
+                      <Badge variant="secondary" className="auto-badge" data-testid="auto-badge">
+                        🤖 Veille auto
+                      </Badge>
+                    )}
+                    {!isAutomatic && (
+                      <Badge variant="outline" className="manual-badge" data-testid="manual-badge">
+                        ✋ Manuel
+                      </Badge>
+                    )}
+                  </div>
                 </div>
                 <CardDescription>{summary.source_name}</CardDescription>
                 {summary.category && (

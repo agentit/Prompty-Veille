@@ -1004,8 +1004,10 @@ const ArticleDetail = () => {
             </div>
           )}
           <Separator className="my-6" />
-          <div className="article-content" data-testid="article-content">
-            <p className="article-text">{article.content}</p>
+          <div className="article-content markdown-content" data-testid="article-content">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {article.content}
+            </ReactMarkdown>
           </div>
           <Separator className="my-6" />
           <div className="article-sources">

@@ -628,7 +628,7 @@ body {
 .markdown-content {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--gray-steel);
+  color: var(--white-off);
 }
 
 .markdown-content h1 {

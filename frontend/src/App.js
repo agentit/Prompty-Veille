@@ -1111,6 +1111,16 @@ const ArticleDetail = () => {
 
 // Navigation Component
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [sourcesOpen, setSourcesOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavClick = (path) => {
+    navigate(path);
+    setIsOpen(false);
+    setSourcesOpen(false);
+  };
+
   return (
     <nav className="main-nav">
       <div className="nav-container">
@@ -1122,23 +1132,90 @@ const Navigation = () => {
           />
           <span className="logo-text">AI Veille</span>
         </Link>
-        <div className="nav-links">
-          <Link to="/" className="nav-link" data-testid="nav-dashboard">
-            Tableau de bord
+
+        {/* Hamburger Button */}
+        <button 
+          className="hamburger-button"
+          onClick={() => setIsOpen(!isOpen)}
+          data-testid="hamburger-button"
+          aria-label="Menu"
+        >
+          <span className={`hamburger-line ${isOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isOpen ? 'open' : ''}`}></span>
+        </button>
+
+        {/* Mobile/Desktop Menu */}
+        <div className={`nav-menu ${isOpen ? 'open' : ''}`}>
+          <Link 
+            to="/" 
+            className="nav-link" 
+            onClick={() => handleNavClick('/')}
+            data-testid="nav-home"
+          >
+            <span className="nav-icon">🏠</span>
+            Home
           </Link>
-          <Link to="/sources" className="nav-link" data-testid="nav-sources">
-            Sources
-          </Link>
-          <Link to="/summaries" className="nav-link" data-testid="nav-summaries">
+
+          {/* Sources with submenu */}
+          <div className="nav-item-with-submenu">
+            <button 
+              className="nav-link nav-expandable"
+              onClick={() => setSourcesOpen(!sourcesOpen)}
+              data-testid="nav-sources-toggle"
+            >
+              <span className="nav-icon">📡</span>
+              Sources
+              <span className={`expand-arrow ${sourcesOpen ? 'open' : ''}`}>▼</span>
+            </button>
+            <div className={`submenu ${sourcesOpen ? 'open' : ''}`}>
+              <Link 
+                to="/sources" 
+                className="submenu-link"
+                onClick={() => handleNavClick('/sources')}
+                data-testid="nav-sources"
+              >
+                Gestion des sources
+              </Link>
+              <Link 
+                to="/single-url" 
+                className="submenu-link"
+                onClick={() => handleNavClick('/single-url')}
+                data-testid="nav-single-url"
+              >
+                URL perso
+              </Link>
+            </div>
+          </div>
+
+          <Link 
+            to="/summaries" 
+            className="nav-link"
+            onClick={() => handleNavClick('/summaries')}
+            data-testid="nav-summaries"
+          >
+            <span className="nav-icon">📝</span>
             Résumés
           </Link>
-          <Link to="/single-url" className="nav-link" data-testid="nav-single-url">
-            URL unique
-          </Link>
-          <Link to="/articles" className="nav-link" data-testid="nav-articles">
+
+          <Link 
+            to="/articles" 
+            className="nav-link"
+            onClick={() => handleNavClick('/articles')}
+            data-testid="nav-articles"
+          >
+            <span className="nav-icon">📄</span>
             Articles
           </Link>
         </div>
+
+        {/* Overlay for mobile */}
+        {isOpen && (
+          <div 
+            className="nav-overlay"
+            onClick={() => setIsOpen(false)}
+          ></div>
+        )}
       </div>
     </nav>
   );

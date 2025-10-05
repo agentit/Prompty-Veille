@@ -264,14 +264,14 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #eff6ff;
+  background: var(--gray-anthracite);
   border-radius: 8px;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--yellow-main);
 }
 
 .selection-count {
   font-weight: 600;
-  color: #2563eb;
+  color: var(--yellow-main);
   font-size: 0.95rem;
 }
 

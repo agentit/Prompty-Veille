@@ -176,34 +176,80 @@ Résumé :"""
         return f"Erreur lors de la génération du résumé: {str(e)}"
 
 async def compile_article_with_llm(theme: str, summaries: List[Summary]) -> str:
-    """Compile multiple summaries into an instructive article"""
+    """Compile multiple summaries into an in-depth SEO-optimized article"""
     try:
         chat = LlmChat(
             api_key=EMERGENT_LLM_KEY,
             session_id=str(uuid.uuid4()),
-            system_message="Tu es un expert en intelligence artificielle qui rédige des articles instructifs et pédagogiques en compilant plusieurs sources d'information."
+            system_message="Tu es un expert en rédaction d'articles SEO sur l'intelligence artificielle. Tu crées des contenus approfondis, structurés et optimisés pour le référencement."
         ).with_model("openai", "gpt-4o-mini")
         
-        sources_text = "\n\n".join([
-            f"Source {i+1}: {s.source_name}\nURL: {s.url}\nTitre: {s.title}\nRésumé: {s.summary}"
-            for i, s in enumerate(summaries)
-        ])
+        # Extract full content from URLs and prepare sources
+        sources_data = []
+        for i, s in enumerate(summaries):
+            logger.info(f"Extracting full content from {s.url}")
+            extracted = await extract_content_from_url(s.url)
+            
+            source_info = f"""
+Source {i+1}: {s.source_name}
+URL: {s.url}
+Titre: {s.title}
+Résumé: {s.summary}
+Contenu complet extrait: {extracted['content'][:8000] if extracted['success'] else 'Contenu non disponible'}
+"""
+            sources_data.append(source_info)
+        
+        sources_text = "\n\n".join(sources_data)
         
         user_message = UserMessage(
-            text=f"""Compile ces différentes sources sur le thème "{theme}" en un article instructif et pédagogique en français.
+            text=f"""Rédige un article SEO approfondi et détaillé sur le thème "{theme}" en français, en utilisant les sources fournies.
 
-Sources :
+SOURCES COMPLÈTES :
 {sources_text}
 
-Crée un article qui :
-1. Présente une vue d'ensemble du sujet
-2. Synthétise les informations des différentes sources
-3. Explique les concepts de manière pédagogique
-4. Met en avant les points importants et nouveautés
-5. Fait entre 400-800 mots
-6. Inclut des sections claires
+CONSIGNES STRICTES :
+1. **Format Markdown** : Utilise la syntaxe Markdown pour tout le formatage
+2. **Structure SEO optimale** :
+   - 1 titre H1 (# Titre principal)
+   - Plusieurs H2 (## Section) et H3 (### Sous-section)
+   - Introduction engageante avec le mot-clé principal
+   - Conclusion avec appel à l'action
+3. **Longueur** : MINIMUM 1500 mots (c'est crucial pour le SEO)
+4. **Contenu approfondi** :
+   - Analyse détaillée de chaque source
+   - Exemples concrets et cas d'usage
+   - Données techniques et chiffres issus des sources
+   - Explications pédagogiques et vulgarisation
+   - Perspectives et implications
+5. **SEO** :
+   - Intégration naturelle des mots-clés
+   - Paragraphes de 3-5 phrases
+   - Listes à puces pour la lisibilité
+   - Liens internes logiques entre sections
+6. **Ton** : Professionnel, informatif, pédagogique
 
-Article :"""
+STRUCTURE SUGGÉRÉE :
+# [Titre Principal Accrocheur]
+
+## Introduction
+[150-200 mots introduisant le sujet avec le contexte]
+
+## Contexte et Enjeux
+[300-400 mots sur le contexte général]
+
+## Analyse Détaillée
+[500-600 mots analysant les sources en profondeur]
+
+## Cas d'Usage et Applications
+[300-400 mots sur les applications pratiques]
+
+## Perspectives et Avenir
+[200-300 mots sur les implications futures]
+
+## Conclusion
+[100-150 mots de synthèse]
+
+Génère maintenant l'article complet :"""
         )
         
         response = await chat.send_message(user_message)

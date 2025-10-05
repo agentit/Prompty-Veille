@@ -204,8 +204,8 @@ body {
 }
 
 .summary-card {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: var(--gray-dark);
+  border: 1px solid var(--gray-steel);
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
@@ -214,8 +214,8 @@ body {
 
 .summary-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.1);
-  border-color: #93c5fd;
+  box-shadow: 0 12px 24px rgba(255, 200, 50, 0.15);
+  border-color: var(--yellow-main);
 }
 
 .summary-card.selected {

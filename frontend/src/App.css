@@ -290,15 +290,15 @@ body {
 }
 
 .auto-badge {
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #10b981;
+  background: rgba(255, 200, 50, 0.2);
+  color: var(--yellow-main);
+  border: 1px solid var(--yellow-main);
 }
 
 .manual-badge {
-  background: #fef3c7;
-  color: #92400e;
-  border: 1px solid #f59e0b;
+  background: rgba(255, 214, 90, 0.2);
+  color: var(--gold-metallic);
+  border: 1px solid var(--gold-metallic);
 }
 
 .summary-title {

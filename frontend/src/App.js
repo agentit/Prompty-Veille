@@ -642,9 +642,29 @@ const Summaries = () => {
                 )}
                 <p className="summary-date">{new Date(summary.created_at).toLocaleDateString('fr-FR')}</p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="summary-footer">
                 <Button onClick={() => navigate(`/summaries/${summary.id}`)} data-testid={`view-summary-btn-${summary.id}`}>
                   Lire le résumé complet
+                </Button>
+                <Button 
+                  variant="destructive" 
+                  size="sm"
+                  onClick={async (e) => {
+                    e.stopPropagation();
+                    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce résumé ?")) {
+                      try {
+                        await axios.delete(`${API}/summaries/${summary.id}`);
+                        toast.success("Résumé supprimé");
+                        fetchData();
+                      } catch (error) {
+                        console.error("Error deleting summary:", error);
+                        toast.error("Erreur lors de la suppression");
+                      }
+                    }
+                  }}
+                  data-testid={`delete-summary-btn-${summary.id}`}
+                >
+                  Supprimer
                 </Button>
               </CardFooter>
             </Card>

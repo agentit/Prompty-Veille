@@ -1126,11 +1126,11 @@ const Navigation = () => {
       <div className="nav-container">
         <Link to="/" className="nav-logo" data-testid="nav-logo">
           <img 
-            src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" 
-            alt="AI Veille Robot" 
+            src="https://customer-assets.emergentagent.com/job_ai-newswatch/artifacts/ex54m1xv_PromptyBOT9.png" 
+            alt="Prompty Veille Robot" 
             className="logo-robot"
           />
-          <span className="logo-text">AI Veille</span>
+          <span className="logo-text">Prompty Veille</span>
         </Link>
 
         {/* Hamburger Button */}

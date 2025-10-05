@@ -493,8 +493,8 @@ body {
 }
 
 .legend-indicator.automatic {
-  background: linear-gradient(to right, rgba(255, 200, 50, 0.2) 0%, var(--gray-dark) 100%);
-  border-color: var(--yellow-main);
+  background: linear-gradient(to right, rgba(255, 140, 0, 0.2) 0%, var(--gray-dark) 100%);
+  border-color: var(--orange-dark);
   border-left-width: 4px;
 }
 

@@ -871,6 +871,40 @@ body {
   background: var(--gray-anthracite);
 }
 
+/* Copy Article Button */
+.copy-article-section {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.copy-article-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: var(--gray-anthracite);
+  color: var(--yellow-main);
+  border: 2px solid var(--yellow-main);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.2);
+}
+
+.copy-article-btn:hover {
+  background: var(--yellow-main);
+  color: var(--black-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 200, 50, 0.4);
+}
+
+.copy-icon {
+  font-size: 1.3rem;
+}
+
 .article-sources {
   margin-top: 2rem;
 }

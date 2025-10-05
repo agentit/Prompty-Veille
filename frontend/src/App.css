@@ -401,10 +401,13 @@ body {
   align-items: center;
 }
 
-.source-footer {
+.source-footer,
+.summary-footer,
+.article-footer {
   display: flex;
   gap: 0.5rem;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .last-checked {

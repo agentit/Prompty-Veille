@@ -201,6 +201,26 @@ body {
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
+.summary-card.automatic {
+  border-left: 4px solid #10b981;
+  background: linear-gradient(to right, #ecfdf5 0%, white 20%);
+}
+
+.summary-card.manual {
+  border-left: 4px solid #f59e0b;
+  background: linear-gradient(to right, #fffbeb 0%, white 20%);
+}
+
+.summary-card.automatic.selected {
+  border-left: 4px solid #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.summary-card.manual.selected {
+  border-left: 4px solid #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
 .summary-header-left {
   display: flex;
   align-items: flex-start;

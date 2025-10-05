@@ -291,9 +291,9 @@ body {
 }
 
 .auto-badge {
-  background: rgba(255, 200, 50, 0.2);
-  color: var(--yellow-main);
-  border: 1px solid var(--yellow-main);
+  background: rgba(255, 140, 0, 0.2);
+  color: var(--orange-dark);
+  border: 1px solid var(--orange-dark);
 }
 
 .manual-badge {

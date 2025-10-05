@@ -363,6 +363,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
   color: var(--yellow-main);
+  text-shadow: 0 2px 8px rgba(255, 200, 50, 0.3);
 }
 
 .sources-header p,

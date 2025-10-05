@@ -983,6 +983,38 @@ const ArticleDetail = () => {
     }
   };
 
+  const handleCopyArticle = async () => {
+    try {
+      // Create formatted text with title, theme, content and sources
+      const formattedText = `# ${article.title}
+
+**Thème:** ${article.theme}
+
+---
+
+${article.content}
+
+---
+
+## Sources
+${article.source_references && article.source_references.length > 0 
+  ? article.source_references.map((ref, idx) => `${idx + 1}. ${ref.title}\n   ${ref.url}`).join('\n')
+  : article.sources.map((url, idx) => `${idx + 1}. ${url}`).join('\n')
+}`;
+
+      await navigator.clipboard.writeText(formattedText);
+      setCopied(true);
+      toast.success("Article copié dans le presse-papier !");
+      
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Error copying article:", error);
+      toast.error("Erreur lors de la copie");
+    }
+  };
+
   if (loading) {
     return <div className="loading-container">Chargement...</div>;
   }

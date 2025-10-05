@@ -219,29 +219,29 @@ body {
 }
 
 .summary-card.selected {
-  border-color: #2563eb;
+  border-color: var(--yellow-main);
   border-width: 2px;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.3);
 }
 
 .summary-card.automatic {
-  border-left: 4px solid #10b981;
-  background: linear-gradient(to right, #ecfdf5 0%, white 20%);
+  border-left: 4px solid var(--yellow-main);
+  background: linear-gradient(to right, rgba(255, 200, 50, 0.1) 0%, var(--gray-dark) 20%);
 }
 
 .summary-card.manual {
-  border-left: 4px solid #f59e0b;
-  background: linear-gradient(to right, #fffbeb 0%, white 20%);
+  border-left: 4px solid var(--gold-metallic);
+  background: linear-gradient(to right, rgba(255, 214, 90, 0.1) 0%, var(--gray-dark) 20%);
 }
 
 .summary-card.automatic.selected {
-  border-left: 4px solid #10b981;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  border-left: 4px solid var(--yellow-main);
+  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.4);
 }
 
 .summary-card.manual.selected {
-  border-left: 4px solid #f59e0b;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  border-left: 4px solid var(--gold-metallic);
+  box-shadow: 0 4px 12px rgba(255, 214, 90, 0.4);
 }
 
 .summary-header-left {

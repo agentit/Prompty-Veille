@@ -363,6 +363,10 @@ const Summaries = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedTag, setSelectedTag] = useState("all");
   const [view, setView] = useState("chronological");
+  const [selectedForArticle, setSelectedForArticle] = useState([]);
+  const [compilingArticle, setCompilingArticle] = useState(false);
+  const [showCompileDialog, setShowCompileDialog] = useState(false);
+  const [articleFormData, setArticleFormData] = useState({ title: "", theme: "" });
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -438,6 +438,44 @@ body {
   gap: 0.75rem;
 }
 
+/* Legend */
+.legend-section {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.legend-indicator {
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.legend-indicator.automatic {
+  background: linear-gradient(to right, #ecfdf5 0%, white 100%);
+  border-color: #10b981;
+  border-left-width: 4px;
+}
+
+.legend-indicator.manual {
+  background: linear-gradient(to right, #fffbeb 0%, white 100%);
+  border-color: #f59e0b;
+  border-left-width: 4px;
+}
+
 /* Filters */
 .filters-section {
   background: white;

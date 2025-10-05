@@ -1058,6 +1058,22 @@ ${article.source_references && article.source_references.length > 0
             </ReactMarkdown>
           </div>
           <Separator className="my-6" />
+          
+          {/* Copy Article Button */}
+          <div className="copy-article-section">
+            <Button 
+              onClick={handleCopyArticle}
+              className="copy-article-btn"
+              data-testid="copy-article-btn"
+              variant="outline"
+            >
+              <span className="copy-icon">{copied ? "✓" : "📋"}</span>
+              {copied ? "Copié !" : "Copier l'article complet"}
+            </Button>
+          </div>
+
+          <Separator className="my-6" />
+          
           <div className="article-sources">
             <h3>Sources</h3>
             <div className="sources-grid">

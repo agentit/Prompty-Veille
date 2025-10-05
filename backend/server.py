@@ -77,12 +77,18 @@ class Summary(BaseModel):
     is_new: bool = True
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
+class SourceReference(BaseModel):
+    url: str
+    title: str
+    source_name: str
+
 class Article(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     title: str
     theme: str
     content: str
-    sources: List[str] = []
+    sources: List[str] = []  # Keep for backward compatibility
+    source_references: List[SourceReference] = []  # New detailed sources
     tags: List[str] = []
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 

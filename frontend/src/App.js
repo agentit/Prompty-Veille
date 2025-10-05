@@ -582,10 +582,23 @@ const Summaries = () => {
           </Card>
         ) : (
           filteredSummaries.map((summary) => (
-            <Card key={summary.id} className="summary-card" data-testid={`summary-card-${summary.id}`}>
+            <Card 
+              key={summary.id} 
+              className={`summary-card ${selectedForArticle.includes(summary.id) ? 'selected' : ''}`}
+              data-testid={`summary-card-${summary.id}`}
+            >
               <CardHeader>
                 <div className="summary-card-header">
-                  <CardTitle className="summary-title">{summary.title}</CardTitle>
+                  <div className="summary-header-left">
+                    <input
+                      type="checkbox"
+                      checked={selectedForArticle.includes(summary.id)}
+                      onChange={() => toggleSummarySelection(summary.id)}
+                      className="summary-checkbox"
+                      data-testid={`select-summary-checkbox-${summary.id}`}
+                    />
+                    <CardTitle className="summary-title">{summary.title}</CardTitle>
+                  </div>
                   {summary.is_new && <Badge variant="default" data-testid="new-badge">Nouveau</Badge>}
                 </div>
                 <CardDescription>{summary.source_name}</CardDescription>

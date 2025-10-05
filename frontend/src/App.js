@@ -964,6 +964,7 @@ const ArticleDetail = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [copied, setCopied] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {

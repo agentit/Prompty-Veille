@@ -420,6 +420,40 @@ const Summaries = () => {
     setFilteredSummaries(filtered);
   };
 
+  const toggleSummarySelection = (id) => {
+    setSelectedForArticle(prev => 
+      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
+    );
+  };
+
+  const handleCompileArticle = async (e) => {
+    e.preventDefault();
+    if (selectedForArticle.length < 2) {
+      toast.error("Veuillez sélectionner au moins 2 résumés pour compiler un article");
+      return;
+    }
+
+    setCompilingArticle(true);
+    try {
+      const response = await axios.post(`${API}/articles`, {
+        title: articleFormData.title,
+        theme: articleFormData.theme,
+        summary_ids: selectedForArticle
+      });
+      
+      toast.success("Article compilé avec succès !");
+      setShowCompileDialog(false);
+      setArticleFormData({ title: "", theme: "" });
+      setSelectedForArticle([]);
+      navigate(`/articles/${response.data.id}`);
+    } catch (error) {
+      console.error("Error compiling article:", error);
+      toast.error("Erreur lors de la compilation de l'article");
+    } finally {
+      setCompilingArticle(false);
+    }
+  };
+
   if (loading) {
     return <div className="loading-container">Chargement...</div>;
   }

@@ -118,8 +118,7 @@ const Dashboard = () => {
                 </Button>
               </CardFooter>
             </Card>
-          );
-          })}
+          ))}
         </div>
       </div>
     </div>

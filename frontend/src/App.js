@@ -304,7 +304,7 @@ const Sources = () => {
           <Card className="empty-state">
             <CardContent>
               <img 
-                src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" 
+                src="https://customer-assets.emergentagent.com/job_ai-newswatch/artifacts/ex54m1xv_PromptyBOT9.png" 
                 alt="Robot mascotte" 
                 className="empty-mascot"
               />

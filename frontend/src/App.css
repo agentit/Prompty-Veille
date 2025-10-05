@@ -48,8 +48,16 @@ body {
   color: #2563eb;
 }
 
-.logo-icon {
-  font-size: 2rem;
+.logo-robot {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+  transition: transform 0.3s;
+}
+
+.logo-robot:hover {
+  transform: scale(1.05) rotate(5deg);
 }
 
 .logo-text {

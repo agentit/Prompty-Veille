@@ -91,7 +91,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #64748b;
+  color: var(--gray-steel);
   font-weight: 500;
   font-size: 0.95rem;
   padding: 0.5rem 1rem;
@@ -100,8 +100,8 @@ body {
 }
 
 .nav-link:hover {
-  color: #2563eb;
-  background: #eff6ff;
+  color: var(--yellow-main);
+  background: var(--gray-dark);
 }
 
 /* Main Content */

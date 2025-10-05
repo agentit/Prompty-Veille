@@ -803,14 +803,7 @@ const SingleUrl = () => {
 // Articles Component
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const [summaries, setSummaries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedSummaries, setSelectedSummaries] = useState([]);
-  const [formData, setFormData] = useState({
-    title: "",
-    theme: ""
-  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -819,48 +812,14 @@ const Articles = () => {
 
   const fetchData = async () => {
     try {
-      const [articlesRes, summariesRes] = await Promise.all([
-        axios.get(`${API}/articles`),
-        axios.get(`${API}/summaries`)
-      ]);
+      const articlesRes = await axios.get(`${API}/articles`);
       setArticles(articlesRes.data);
-      setSummaries(summariesRes.data);
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Erreur lors du chargement");
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (selectedSummaries.length === 0) {
-      toast.error("Veuillez sélectionner au moins un résumé");
-      return;
-    }
-
-    try {
-      await axios.post(`${API}/articles`, {
-        title: formData.title,
-        theme: formData.theme,
-        summary_ids: selectedSummaries
-      });
-      toast.success("Article compilé avec succès");
-      setDialogOpen(false);
-      setFormData({ title: "", theme: "" });
-      setSelectedSummaries([]);
-      fetchData();
-    } catch (error) {
-      console.error("Error creating article:", error);
-      toast.error("Erreur lors de la compilation");
-    }
-  };
-
-  const toggleSummary = (id) => {
-    setSelectedSummaries(prev => 
-      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
-    );
   };
 
   if (loading) {

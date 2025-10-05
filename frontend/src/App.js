@@ -346,8 +346,7 @@ const Sources = () => {
                 </Button>
               </CardFooter>
             </Card>
-          );
-          })
+          ))
         )}
       </div>
     </div>

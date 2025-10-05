@@ -85,9 +85,42 @@ body {
   background-clip: text;
 }
 
-.nav-links {
+/* Hamburger Button */
+.hamburger-button {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 28px;
+  height: 3px;
+  background: var(--yellow-main);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation Menu */
+.nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -96,14 +129,79 @@ body {
   color: var(--gray-steel);
   font-weight: 500;
   font-size: 0.95rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
 }
 
 .nav-link:hover {
   color: var(--yellow-main);
   background: var(--gray-dark);
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+}
+
+/* Submenu */
+.nav-item-with-submenu {
+  position: relative;
+}
+
+.nav-expandable {
+  justify-content: space-between;
+}
+
+.expand-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s;
+  color: var(--gray-steel);
+}
+
+.expand-arrow.open {
+  transform: rotate(180deg);
+  color: var(--yellow-main);
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 2.5rem;
+  margin-top: 0.25rem;
+}
+
+.submenu.open {
+  display: flex;
+}
+
+.submenu-link {
+  text-decoration: none;
+  color: var(--gray-steel);
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.submenu-link:hover {
+  color: var(--yellow-main);
+  background: var(--gray-dark);
+  border-left-color: var(--yellow-main);
+}
+
+/* Overlay */
+.nav-overlay {
+  display: none;
 }
 
 /* Main Content */

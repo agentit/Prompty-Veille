@@ -941,6 +941,25 @@ body {
   font-size: 1.05rem;
 }
 
+.empty-mascot {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  margin: 0 auto 1.5rem;
+  display: block;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Responsive Design */
 
 /* Tablet */

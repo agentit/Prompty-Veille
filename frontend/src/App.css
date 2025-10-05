@@ -1086,6 +1086,39 @@ body {
 
 /* Responsive Design */
 
+/* Desktop submenu */
+@media (min-width: 769px) {
+  .nav-item-with-submenu {
+    position: relative;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--gray-anthracite);
+    border: 1px solid var(--gray-steel);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-top: 0.5rem;
+  }
+
+  .submenu.open {
+    display: flex;
+  }
+
+  .submenu-link {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-expandable:hover {
+    color: var(--yellow-main);
+    background: var(--gray-dark);
+  }
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .main-content {

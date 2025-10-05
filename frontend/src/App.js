@@ -1012,15 +1012,81 @@ const ArticleDetail = () => {
           <Separator className="my-6" />
           <div className="article-sources">
             <h3>Sources</h3>
-            <ul>
-              {article.sources.map((source, idx) => (
-                <li key={idx}>
-                  <a href={source} target="_blank" rel="noopener noreferrer" data-testid={`source-link-${idx}`}>
-                    {source}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="sources-grid">
+              {article.source_references && article.source_references.length > 0 ? (
+                article.source_references.map((sourceRef, idx) => {
+                  // Extract domain from URL
+                  let domain = '';
+                  let displayText = '';
+                  
+                  try {
+                    const urlObj = new URL(sourceRef.url);
+                    domain = urlObj.hostname.replace('www.', '');
+                    
+                    // Create display text based on source
+                    if (domain.includes('linkedin.com')) {
+                      displayText = `LinkedIn - ${sourceRef.source_name}`;
+                    } else if (domain.includes('arxiv.org')) {
+                      // Extract arxiv ID from title if possible
+                      const arxivMatch = sourceRef.title.match(/\[(\d+\.\d+)\]/);
+                      displayText = arxivMatch 
+                        ? `arXiv ${arxivMatch[1]}`
+                        : `${domain} - ${sourceRef.title.substring(0, 40)}${sourceRef.title.length > 40 ? '...' : ''}`;
+                    } else {
+                      // For other domains, show domain + shortened title
+                      displayText = `${domain} - ${sourceRef.title.substring(0, 40)}${sourceRef.title.length > 40 ? '...' : ''}`;
+                    }
+                  } catch (e) {
+                    displayText = sourceRef.title;
+                  }
+                  
+                  return (
+                    <a 
+                      key={idx}
+                      href={sourceRef.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="source-card"
+                      data-testid={`source-link-${idx}`}
+                    >
+                      <div className="source-icon">🔗</div>
+                      <div className="source-info">
+                        <span className="source-display">{displayText}</span>
+                        <span className="source-url">{sourceRef.url}</span>
+                      </div>
+                    </a>
+                  );
+                })
+              ) : (
+                // Fallback for old articles without source_references
+                article.sources.map((source, idx) => {
+                  let domain = '';
+                  try {
+                    const urlObj = new URL(source);
+                    domain = urlObj.hostname.replace('www.', '');
+                  } catch (e) {
+                    domain = source;
+                  }
+                  
+                  return (
+                    <a 
+                      key={idx}
+                      href={source} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="source-card"
+                      data-testid={`source-link-${idx}`}
+                    >
+                      <div className="source-icon">🔗</div>
+                      <div className="source-info">
+                        <span className="source-display">{domain}</span>
+                        <span className="source-url">{source}</span>
+                      </div>
+                    </a>
+                  );
+                })
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>

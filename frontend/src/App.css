@@ -307,6 +307,16 @@ body {
   margin-top: 0.25rem;
 }
 
+.info-text {
+  font-size: 0.95rem;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 0.75rem;
+  border: 1px solid #bfdbfe;
+}
+
 .sources-list,
 .articles-list {
   display: grid;

@@ -470,12 +470,22 @@ async def create_article(request: CompileArticleRequest):
     # Extract all tags from summaries
     all_tags = list(set(tag for s in summaries for tag in s.tags))
     
+    # Create source references with detailed info
+    source_refs = [
+        SourceReference(
+            url=s.url,
+            title=s.title,
+            source_name=s.source_name
+        ) for s in summaries
+    ]
+    
     # Create article
     article = Article(
         title=request.title,
         theme=request.theme,
         content=content,
-        sources=[s.url for s in summaries],
+        sources=[s.url for s in summaries],  # Keep for backward compatibility
+        source_references=source_refs,
         tags=all_tags
     )
     

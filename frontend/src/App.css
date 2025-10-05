@@ -226,8 +226,8 @@ body {
 }
 
 .summary-card.automatic {
-  border-left: 4px solid var(--yellow-main);
-  background: linear-gradient(to right, rgba(255, 200, 50, 0.1) 0%, var(--gray-dark) 20%);
+  border-left: 4px solid var(--orange-dark);
+  background: linear-gradient(to right, rgba(255, 140, 0, 0.1) 0%, var(--gray-dark) 20%);
 }
 
 .summary-card.manual {
@@ -236,8 +236,8 @@ body {
 }
 
 .summary-card.automatic.selected {
-  border-left: 4px solid var(--yellow-main);
-  box-shadow: 0 4px 12px rgba(255, 200, 50, 0.4);
+  border-left: 4px solid var(--orange-dark);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
 }
 
 .summary-card.manual.selected {

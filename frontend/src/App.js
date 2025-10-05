@@ -888,6 +888,11 @@ const Articles = () => {
         {articles.length === 0 ? (
           <Card className="empty-state">
             <CardContent>
+              <img 
+                src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" 
+                alt="Robot mascotte" 
+                className="empty-mascot"
+              />
               <p>Aucun article compilé. Commencez par compiler vos premiers résumés !</p>
             </CardContent>
           </Card>

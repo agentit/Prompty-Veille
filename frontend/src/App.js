@@ -831,73 +831,9 @@ const Articles = () => {
       <div className="articles-header">
         <div>
           <h1 data-testid="articles-title">Articles compilés</h1>
-          <p>Articles instructifs générés à partir de plusieurs sources</p>
+          <p>Articles instructifs générés à partir de résumés validés</p>
+          <p className="info-text">💡 Pour créer un article, sélectionnez des résumés dans la page "Résumés"</p>
         </div>
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogTrigger asChild>
-            <Button data-testid="compile-article-btn">
-              + Compiler un article
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="compile-dialog" data-testid="compile-dialog">
-            <DialogHeader>
-              <DialogTitle>Compiler un nouvel article</DialogTitle>
-              <DialogDescription>
-                Sélectionnez plusieurs résumés pour créer un article instructif
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSubmit}>
-              <div className="form-grid">
-                <div className="form-field">
-                  <Label htmlFor="title">Titre de l'article</Label>
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    required
-                    data-testid="article-title-input"
-                  />
-                </div>
-                <div className="form-field">
-                  <Label htmlFor="theme">Thème</Label>
-                  <Input
-                    id="theme"
-                    value={formData.theme}
-                    onChange={(e) => setFormData({ ...formData, theme: e.target.value })}
-                    required
-                    placeholder="Ex: Avancées récentes en IA générative"
-                    data-testid="article-theme-input"
-                  />
-                </div>
-                <div className="form-field">
-                  <Label>Sélectionner les résumés ({selectedSummaries.length} sélectionnés)</Label>
-                  <div className="summaries-selection">
-                    {summaries.slice(0, 20).map((summary) => (
-                      <div key={summary.id} className="summary-selection-item">
-                        <input
-                          type="checkbox"
-                          id={`summary-${summary.id}`}
-                          checked={selectedSummaries.includes(summary.id)}
-                          onChange={() => toggleSummary(summary.id)}
-                          data-testid={`select-summary-${summary.id}`}
-                        />
-                        <label htmlFor={`summary-${summary.id}`}>
-                          <strong>{summary.title}</strong>
-                          <span className="summary-source">{summary.source_name}</span>
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <DialogFooter>
-                <Button type="submit" data-testid="create-article-btn">
-                  Créer l'article
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
       </div>
 
       <div className="articles-list">

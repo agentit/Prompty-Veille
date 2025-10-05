@@ -461,9 +461,76 @@ const Summaries = () => {
   return (
     <div className="summaries-container">
       <div className="summaries-header">
-        <h1 data-testid="summaries-title">Résumés</h1>
-        <p>Tous vos résumés de veille IA</p>
+        <div>
+          <h1 data-testid="summaries-title">Résumés</h1>
+          <p>Tous vos résumés de veille IA</p>
+        </div>
+        {selectedForArticle.length > 0 && (
+          <div className="selection-actions">
+            <span className="selection-count">{selectedForArticle.length} résumé(s) sélectionné(s)</span>
+            <Button 
+              onClick={() => setShowCompileDialog(true)}
+              data-testid="open-compile-dialog-btn"
+            >
+              Compiler en article
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setSelectedForArticle([])}
+              data-testid="clear-selection-btn"
+            >
+              Annuler la sélection
+            </Button>
+          </div>
+        )}
       </div>
+
+      <Dialog open={showCompileDialog} onOpenChange={setShowCompileDialog}>
+        <DialogContent data-testid="compile-article-dialog">
+          <DialogHeader>
+            <DialogTitle>Compiler un article</DialogTitle>
+            <DialogDescription>
+              Créez un article instructif à partir de {selectedForArticle.length} résumé(s) sélectionné(s)
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleCompileArticle}>
+            <div className="form-grid">
+              <div className="form-field">
+                <Label htmlFor="article-title">Titre de l'article</Label>
+                <Input
+                  id="article-title"
+                  value={articleFormData.title}
+                  onChange={(e) => setArticleFormData({ ...articleFormData, title: e.target.value })}
+                  required
+                  placeholder="Ex: Les avancées de l'IA en 2025"
+                  data-testid="compile-article-title-input"
+                />
+              </div>
+              <div className="form-field">
+                <Label htmlFor="article-theme">Thème de l'article</Label>
+                <Textarea
+                  id="article-theme"
+                  value={articleFormData.theme}
+                  onChange={(e) => setArticleFormData({ ...articleFormData, theme: e.target.value })}
+                  required
+                  placeholder="Ex: Évolution des modèles de langage et leur impact"
+                  data-testid="compile-article-theme-input"
+                  rows={3}
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button 
+                type="submit" 
+                disabled={compilingArticle}
+                data-testid="submit-compile-btn"
+              >
+                {compilingArticle ? "Génération en cours..." : "Générer l'article"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <div className="filters-section">
         <Tabs value={view} onValueChange={setView}>

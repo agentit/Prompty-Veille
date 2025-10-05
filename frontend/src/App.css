@@ -382,7 +382,7 @@ body {
   padding: 0.75rem 1rem;
   border-radius: 6px;
   margin-top: 0.75rem;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--yellow-main);
 }
 
 .sources-list,

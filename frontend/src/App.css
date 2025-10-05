@@ -639,6 +639,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(255, 200, 50, 0.3);
 }
 
 .markdown-content h2 {

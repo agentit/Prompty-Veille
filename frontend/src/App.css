@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
+/* PromptyBot Color Palette */
+:root {
+  --yellow-main: #FFC832;
+  --yellow-hover: #FFB300;
+  --black-deep: #000000;
+  --gray-anthracite: #1C1C1C;
+  --gray-dark: #121212;
+  --white-off: #F5F5F5;
+  --gold-metallic: #FFD65A;
+  --gray-steel: #A8A8A8;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,15 +20,16 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  background: var(--black-deep);
   min-height: 100vh;
-  color: #1a202c;
+  color: var(--white-off);
 }
 
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--black-deep);
 }
 
 /* Navigation */

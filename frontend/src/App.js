@@ -532,6 +532,17 @@ const Summaries = () => {
         </DialogContent>
       </Dialog>
 
+      <div className="legend-section">
+        <div className="legend-item">
+          <div className="legend-indicator automatic"></div>
+          <span>🤖 Résumé de veille automatique</span>
+        </div>
+        <div className="legend-item">
+          <div className="legend-indicator manual"></div>
+          <span>✋ Résumé créé manuellement</span>
+        </div>
+      </div>
+
       <div className="filters-section">
         <Tabs value={view} onValueChange={setView}>
           <TabsList data-testid="view-tabs">

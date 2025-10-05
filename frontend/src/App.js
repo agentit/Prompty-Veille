@@ -884,8 +884,7 @@ const Articles = () => {
                 </Button>
               </CardFooter>
             </Card>
-          );
-          })
+          ))
         )}
       </div>
     </div>

@@ -65,12 +65,14 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
-  transition: transform 0.3s;
+  box-shadow: 0 2px 12px rgba(255, 200, 50, 0.3);
+  border: 2px solid var(--gold-metallic);
+  transition: all 0.3s;
 }
 
 .logo-robot:hover {
   transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 4px 16px rgba(255, 200, 50, 0.5);
 }
 
 .logo-text {

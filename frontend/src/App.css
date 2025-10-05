@@ -492,14 +492,14 @@ body {
 }
 
 .legend-indicator.automatic {
-  background: linear-gradient(to right, #ecfdf5 0%, white 100%);
-  border-color: #10b981;
+  background: linear-gradient(to right, rgba(255, 200, 50, 0.2) 0%, var(--gray-dark) 100%);
+  border-color: var(--yellow-main);
   border-left-width: 4px;
 }
 
 .legend-indicator.manual {
-  background: linear-gradient(to right, #fffbeb 0%, white 100%);
-  border-color: #f59e0b;
+  background: linear-gradient(to right, rgba(255, 214, 90, 0.2) 0%, var(--gray-dark) 100%);
+  border-color: var(--gold-metallic);
   border-left-width: 4px;
 }
 
